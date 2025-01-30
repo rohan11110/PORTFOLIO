@@ -1,11 +1,12 @@
-import project1 from "../asset/projects/project-1.jpg";
-import project2 from "../asset/projects/project-2.jpg";
-import project3 from "../asset/projects/project-3.jpg";
-import project4 from "../asset/projects/project-4.jpg";
+import project1 from "../asset/projects/openpost.png";
+import project2 from "../asset/projects/portfolio.png";
+import project3 from "../asset/projects/weather_app.png";
+import project4 from "../asset/projects/simmon_game.png";
 
-export const HERO_CONTENT = `I am a passionate full stack developer with a knack for crafting robust and scalable web applications. With 5 years of hands-on experience, I have honed my skills in front-end technologies like React and Next.js, as well as back-end technologies like Node.js, MySQL, PostgreSQL, and MongoDB. My goal is to leverage my expertise to create innovative solutions that drive business growth and deliver exceptional user experiences.`;
 
-export const ABOUT_TEXT = `I am a dedicated and versatile full stack developer with a passion for creating efficient and user-friendly web applications. With 5 years of professional experience, I have worked with a variety of technologies, including React, Next.js, Node.js, MySQL, PostgreSQL, and MongoDB. My journey in web development began with a deep curiosity for how things work, and it has evolved into a career where I continuously strive to learn and adapt to new challenges. I thrive in collaborative environments and enjoy solving complex problems to deliver high-quality solutions. Outside of coding, I enjoy staying active, exploring new technologies, and contributing to open-source projects.`;
+export const HERO_CONTENT = `I am a dedicated software developer with a strong command of Data Structures and Algorithms (DSA) in Java, enabling me to design efficient and optimized solutions for complex problems.In addition, I specialize in full-stack web development using the MERN stack (MongoDB, Express.js, React.js, and Node.js), building scalable, high-performance web applications. With expertise in both frontend and backend development, I focus on delivering seamless user experiences and robust system architectures.Passionate about continuous learning and problem-solving, I strive to create impactful software solutions that drive innovation.`;
+
+export const ABOUT_TEXT = `I’m Rohan Vimal, a passionate software developer currently in the final year of my Master’s in Computer Applications at BBD University. I earned my Bachelor's degree from Chhatrapati Shahu Ji Maharaj University, Kanpur, and I come from Unnao. My expertise lies in Data Structures and Algorithms (DSA) with Java and full-stack web development using HTML, CSS, JavaScript, Node.js, Express, and React.js. I also have extensive experience in database management systems, including MongoDB and SQL, along with proficiency in Git for version control. I thrive on building efficient, scalable solutions and tackling complex challenges. Constant learning and improvement drive me, and I actively keep up with industry trends to refine my technical skills. With a strong foundation in both backend and frontend technologies, I am eager to contribute to innovative and impactful projects.`;
 
 export const EXPERIENCES = [
   {
@@ -40,37 +41,37 @@ export const EXPERIENCES = [
 
 export const PROJECTS = [
   {
-    title: "E-Commerce Website",
+    title: "Open Post",
     image: project1,
     description:
-      "A fully functional e-commerce website with features like product listing, shopping cart, and user authentication.",
-    technologies: ["HTML", "CSS", "React", "Node.js", "MongoDB"],
+      "OpenPost is a modern content-sharing platform where users can create, share, and engage with posts in a sleek, dark-themed interface. Built with Node.js, Express.js, and MongoDB, OpenPost ensures a fast, responsive experience across all devices. It includes secure user login and logout functionality, allowing users to manage their accounts. Only authenticated users can edit and delete their own posts, ensuring a personalized and controlled experience.",
+    technologies: ["HTML", "CSS", "Express.js", "Node.js", "MongoDB"],
   },
   {
-    title: "Task Management App",
+    title: "Portfolio",
     image: project2,
     description:
-      "An application for managing tasks and projects, with features such as task creation, assignment, and progress tracking.",
-    technologies: ["HTML", "CSS", "Angular", "Firebase"],
+      "Built a personal portfolio website using React and Tailwind CSS to showcase my skills, projects, and achievements. The site includes an about me section, project highlights, and links to my social profiles. It demonstrates my proficiency in frontend development, UI design, and responsive web design.",
+    technologies: ["HTML", "CSS", "React", "TailwindCSS"],
   },
   {
-    title: "Portfolio Website",
+    title: "Weather App",
     image: project3,
     description:
-      "A personal portfolio website showcasing projects, skills, and contact information.",
-    technologies: ["HTML", "CSS", "React", "Bootstrap"],
+      "An Interactive Weather Application built with HTML, CSS, and JavaScript. This app delivers real-time weather updates with a clean, responsive design and user-friendly interface. Key features include dynamic weather data, a search function, and interactive elements.",
+    technologies: ["HTML", "CSS", "JavaScript", "Bootstrap"],
   },
   {
-    title: "Blogging Platform",
+    title: "Simmon Game",
     image: project4,
     description:
-      "A platform for creating and publishing blog posts, with features like rich text editing, commenting, and user profiles.",
-    technologies: ["HTML", "CSS", "Vue.js", "Express", "mySQL"],
+      "This is a digit simmon game, which is created in JavaScript, CSS and HTML.",
+    technologies: ["HTML", "CSS","JavaScript"],
   },
 ];
 
 export const CONTACT = {
-  address: "767 Fifth Avenue, New York, NY 10153 ",
-  phoneNo: "+12 4555 666 00 ",
-  email: "me@example.com",
+  address: "Unnao Uttar Pradesh India",
+  phoneNo: "+91 8840901110",
+  email: "Rohan2k25@gmail.com",
 };
