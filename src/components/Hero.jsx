@@ -1,41 +1,75 @@
-import React from 'react'
-import {HERO_CONTENT} from '../constants';
-import profilePic from '../asset/Rohan_bitmoji.png';
-import { motion } from "motion/react"
+import { motion, useMotionValue, useSpring, useTransform } from 'motion/react'
+import { useEffect, useState } from 'react'
 
-const container = (delay)=>({
-    hidden : {x : -100, opacity : 0},
-    visible : {x:0 , 
-        opacity : 1 , 
-        transition:{
-            duration : 0.5, 
-            delay : delay
-        }
-    },
-});
+const codeLines = [
+  'const curiosity = true;',
+  'while (curiosity) {',
+  '  build();',
+  '  breakThings();',
+  '  learn();',
+  '}',
+]
 
-const Hero = () => {
+function Hero() {
+  const mouseX = useMotionValue(0)
+  const mouseY = useMotionValue(0)
+  const smoothX = useSpring(mouseX, { stiffness: 90, damping: 22 })
+  const smoothY = useSpring(mouseY, { stiffness: 90, damping: 22 })
+  const gridX = useTransform(smoothX, [-1, 1], ['-18px', '18px'])
+  const gridY = useTransform(smoothY, [-1, 1], ['-18px', '18px'])
+  const orbX = useTransform(smoothX, [-1, 1], ['-30px', '30px'])
+  const orbY = useTransform(smoothY, [-1, 1], ['-22px', '22px'])
+  const [time, setTime] = useState('')
+
+  useEffect(() => {
+    const update = () => setTime(new Intl.DateTimeFormat('en-IN', { timeStyle: 'short' }).format(new Date()))
+    update()
+    const id = setInterval(update, 30000)
+    return () => clearInterval(id)
+  }, [])
+
+  const handlePointerMove = (event) => {
+    const rect = event.currentTarget.getBoundingClientRect()
+    mouseX.set((event.clientX - rect.left) / rect.width * 2 - 1)
+    mouseY.set((event.clientY - rect.top) / rect.height * 2 - 1)
+  }
+
   return (
-        <div className='border-b border-neutral-900 pb-4 lg:mb-35'>
-            <div className="flex flex-wrap">
-                <div className="w-full lg:w-1/2">
-                    <div className="flex flex-col items-center lg:items-start">
-                        <motion.h1 variants={container(0)} initial="hidden" animate="visible" className='pb-16 text-6xl font-thin tracking-tight lg:mt-16 lg:text-8xl'>Rohan Vimal</motion.h1>
-                        <motion.span variants={container(0.5)} initial="hidden" animate="visible" className="bg-gradient-to-r from-pink-300 via-slate-500 to-purple-500 bg-clip-text text-3xl traking-tight text-transparent">
-                            Full Stack Developer
-                        </motion.span>
-                        <motion.p variants={container(1)} initial="hidden" animate="visible" className='my-2 max-w-xl py-6 font-light tracking-tighter'>{HERO_CONTENT}</motion.p>
+    <section id="top" className="hero hero-v2" onPointerMove={handlePointerMove}>
+      <motion.div className="hero-grid-drift" style={{ x: gridX, y: gridY }} />
+      <motion.div className="hero-orb" style={{ x: orbX, y: orbY }} />
 
-                    </div>
-                </div>
-                <div className="w-full lg:w-1/2 lg:p-8">
-                    <div className="flex justify-center">
-                        <motion.img initial={{x:100 , opacity:0}} animate={{x:0,opacity:1}} transition={{duration:1 , delay:1.2}} src={profilePic} alt='Rohan'></motion.img>
-                    </div>
-                </div>
-            </div>
+      <div className="hero-topline">
+        <span className="hero-kicker">Software engineer / builder</span>
+        <span className="hero-topline-right"><span className="pulse-dot" /> available for interesting problems · {time}</span>
+      </div>
+
+      <div className="hero-main">
+        <div className="hero-copy-block">
+          <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .5 }} className="hero-overline mono">01 — make it useful</motion.p>
+          <motion.h1 initial={{ opacity: 0, y: 32 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .7, delay: .05 }} className="hero-title">I build things<br />people <em>enjoy</em> using.</motion.h1>
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .6, delay: .18 }} className="hero-lede">From curious experiments to production-ready interfaces, I like turning a rough idea into something clear, fast, and a little delightful.</motion.p>
+          <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .6, delay: .26 }} className="hero-actions">
+            <a href="#story" className="hero-cta hero-cta-primary">Enter the story <span>↓</span></a>
+            <a href="#work" className="hero-cta hero-cta-secondary">See the work <span>↗</span></a>
+          </motion.div>
         </div>
-    )
+
+        <motion.div initial={{ opacity: 0, x: 28 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: .7, delay: .3 }} className="hero-terminal-card" aria-label="Interactive code vignette">
+          <div className="hero-terminal-top"><span className="mono">/home/rohan/ideas</span><span>RUNNING</span></div>
+          <div className="hero-code">
+            {codeLines.map((line, index) => <div key={line} className="hero-code-line"><span className="hero-code-index">0{index + 1}</span><span>{line}</span></div>)}
+          </div>
+          <div className="hero-terminal-bottom"><span>builds / 024</span><span>status: shipping</span></div>
+        </motion.div>
+      </div>
+
+      <div className="hero-bottom hero-bottom-v2">
+        <p>React · Next.js · Node.js · TypeScript · Java</p>
+        <p>Scroll to explore ↓</p>
+      </div>
+    </section>
+  )
 }
 
 export default Hero

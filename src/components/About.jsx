@@ -1,29 +1,72 @@
-import React from 'react'
-import {ABOUT_TEXT} from '../constants';
-import {motion} from 'motion/react';
+import { motion } from "motion/react";
+import { FaCode, FaDatabase, FaJava } from "react-icons/fa6";
+import { ABOUT_TEXT } from "../constants";
 
+const strengths = [
+  {
+    icon: FaCode,
+    label: "Full-stack craft",
+    text: "Interfaces and APIs that feel effortless.",
+  },
+  {
+    icon: FaJava,
+    label: "Problem solving",
+    text: "DSA-focused thinking in Java.",
+  },
+  {
+    icon: FaDatabase,
+    label: "Data foundations",
+    text: "MongoDB and SQL experience.",
+  },
+];
 
-const About = () => {
+function About() {
   return (
-    <div className='border-b border-neutral-900 pb-4'>
-        <h1 className='my-20 text-center text-4xl'>About 
-           <span className='text-neutral-500'> Me</span>
-        </h1>
-        <div className="flex flex-wrap">
-            <motion.div whileInView={{opacity:1 , x:0}} initial={{opacity:0,x:-100}} transition={{duration: 0.5}} className="w-full lg:w-1/2 lg:p-8">
-                <div className="flex items-center justify-center">
-                    <img className='rounded-2xl w-120 h-90 ' src="https://camo.githubusercontent.com/2366b34bb903c09617990fb5fff4622f3e941349e846ddb7e73df872a9d21233/68747470733a2f2f63646e2e6472696262626c652e636f6d2f75736572732f3733303730332f73637265656e73686f74732f363538313234332f6176656e746f2e676966" alt="about" />
-                </div>
-            </motion.div>
-            <motion.div whileInView={{opacity:1 , x:0}} initial={{opacity:0,x:100}} transition={{duration: 0.5}}  className="w-full lg:w-1/2">
-                <div className="flex justify-center lg:justify-start">
-                    <p className='my-2 max-w-xl py-6'>{ABOUT_TEXT}</p>
-                </div>
-            </motion.div>
-
-        </div>
-    </div>
-  )
+    <section id="about" className="border-t border-white/8 py-24 sm:py-32">
+      <div className="grid gap-12 lg:grid-cols-[.72fr_1.28fr] lg:gap-20">
+        <motion.div
+          initial={{ opacity: 0, x: -25 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          className="relative mx-auto w-full max-w-sm"
+        >
+          <div className="about-monogram">RV<span>.</span></div>
+          <div className="absolute -bottom-5 -right-4 rounded-2xl border border-white/10 bg-[#11151d] p-4 shadow-xl">
+            <p className="mono text-[10px] uppercase tracking-widest text-orange-300">
+              Based in
+            </p>
+            <p className="mt-1 text-sm font-bold text-white">India / Remote</p>
+          </div>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, x: 25 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          <p className="mono text-xs uppercase tracking-[.2em] text-orange-300">
+            01 / About me
+          </p>
+          <h2 className="mt-4 text-4xl font-extrabold tracking-[-.04em] text-white sm:text-5xl">
+            A curious builder who cares about the details.
+          </h2>
+          <p className="mt-7 max-w-2xl leading-7 text-slate-400">
+            {ABOUT_TEXT}
+          </p>
+          <div className="mt-10 grid gap-4 sm:grid-cols-3">
+            {strengths.map(({ icon: Icon, label, text }) => (
+              <div
+                key={label}
+                className="rounded-2xl border border-white/8 bg-white/[.025] p-4"
+              >
+                <Icon className="text-xl text-orange-300" />
+                <h3 className="mt-5 text-sm font-bold text-white">{label}</h3>
+                <p className="mt-2 text-xs leading-5 text-slate-500">{text}</p>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
 }
-
-export default About
+export default About;

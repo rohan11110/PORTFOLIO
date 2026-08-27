@@ -1,36 +1,23 @@
-import React from 'react'
-import logo from "../asset/Rohan_logo.png"
-import {FaLinkedin} from "react-icons/fa";
-import {FaGithub} from "react-icons/fa";
-import {FaSquareXTwitter} from "react-icons/fa6";
-import {FaInstagram} from "react-icons/fa";
+import { useEffect, useState } from 'react'
 
+function Navbar() {
+  const [active, setActive] = useState('top')
 
-function Navbaar() {
-  return (
-    <nav className='mb-20 flex items-center justify-between py-6'>
-      <div className="flex flex-shrink-0 items-center">
-        <img className='mx-3 w-40' src={logo} alt="logo" />
-      </div>
-      <div className='m-8 flex items-center justify-center gap-4 text-2xl'>
-        <a href="https://www.linkedin.com/in/rohanvimal/" target="_blank" rel="noopener noreferrer">
-          <FaLinkedin />
-        </a>
-        <a href="https://github.com/rohan11110" target="_blank" rel="noopener noreferrer">
-          <FaGithub />
-        </a>
-        <a href="https://x.com/rohan2k25" target="_blank" rel="noopener noreferrer">
-          <FaSquareXTwitter />
-        </a>
-        <a href="https://www.instagram.com/mr.rohan_1110/" target="_blank" rel="noopener noreferrer">
-          <FaInstagram />
-        </a>
+  useEffect(() => {
+    const sections = ['top', 'story', 'experience', 'work', 'contact']
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]
+      if (visible) setActive(visible.target.id)
+    }, { threshold: [0.2, 0.5, 0.75] })
+    sections.forEach((id) => { const el = document.getElementById(id); if (el) observer.observe(el) })
+    return () => observer.disconnect()
+  }, [])
 
-
-
-      </div>
-    </nav>
-  )
+  return <header className="site-nav site-nav-v2">
+    <a className="nav-name" href="#top">Rohan<span>.</span></a>
+    <nav className="nav-links" aria-label="Primary navigation">{[['top', 'Home'], ['story', 'Story'], ['experience', 'Experience'], ['work', 'Work'], ['contact', 'Contact']].map(([id, label]) => <a key={id} className={active === id ? 'is-active' : ''} href={`#${id}`}>{label}</a>)}</nav>
+    <a className="nav-hello mono" href="mailto:Rohan2k25@gmail.com"><span className="nav-status" /> Say hello ↗</a>
+  </header>
 }
 
-export default Navbaar
+export default Navbar
