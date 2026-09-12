@@ -17,32 +17,75 @@ export const EXPERIENCES = [
       "Firebase · Authentication · Real-time features",
     ],
   },
-]
+];
 
 export const PROJECTS = [
   {
-    title: "Open Post",
+    title: "CollabDocs",
+    eyebrow: "Real-time collaboration",
     description:
-      "OpenPost is a modern content-sharing platform where users can create, share, and engage with posts in a sleek, dark-themed interface. Built with Node.js, Express.js, and MongoDB, OpenPost ensures a fast, responsive experience across all devices. It includes secure user login and logout functionality, allowing users to manage their accounts. Only authenticated users can edit and delete their own posts, ensuring a personalized and controlled experience.",
+      "A Google Docs-inspired collaborative document platform built for real-time teamwork. Users can create and open documents, invite collaborators, edit together through Socket.IO, persist changes to MongoDB, manage comments, chat with collaborators, track presence and typing activity, view and restore document versions, share documents, and export content. The editor also includes rich-text formatting, links, images, tables, lists, undo/redo, sharing controls, and responsive collaboration UI.",
+    technologies: [
+      "React",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "Socket.IO",
+      "Redux",
+      "JWT",
+    ],
+    features: [
+      "Real-time editing",
+      "Collaborator invites",
+      "Comments & chat",
+      "Presence & typing status",
+      "Version history",
+      "Rich-text editor",
+    ],
+  },
+  {
+    title: "nextjs-loader",
+    eyebrow: "Open-source npm package",
+    description:
+      "An open-source Next.js navigation loading experience I created to make route transitions feel faster and more intentional. The package provides automatic navigation loading with a progress bar, spinner, overlay, skeleton, and adaptive loading behavior, giving Next.js applications a configurable visual feedback layer during navigation.",
+    technologies: ["Next.js", "React", "TypeScript", "npm"],
+    features: [
+      "Navigation progress bar",
+      "Spinner loading state",
+      "Overlay loading state",
+      "Skeleton loading",
+      "Adaptive loading",
+    ],
+    url: "https://www.npmjs.com/package/nextjs-loader",
+    linkLabel: "View on npm",
+  },
+  {
+    title: "Open Post",
+    eyebrow: "Content platform",
+    description:
+      "A modern content-sharing platform where users can create, share, and engage with posts in a responsive interface. It includes secure authentication and ownership-based editing and deletion so users can manage only their own content.",
     technologies: ["HTML", "CSS", "Express.js", "Node.js", "MongoDB"],
   },
   {
     title: "Portfolio",
+    eyebrow: "Personal site",
     description:
-      "Built a personal portfolio website using React and Tailwind CSS to showcase my skills, projects, and achievements. The site includes an about me section, project highlights, and links to my social profiles. It demonstrates my proficiency in frontend development, UI design, and responsive web design.",
+      "A personal portfolio website built with React and Tailwind CSS to present projects, experience, technical skills, and contact information through a responsive, interactive interface.",
     technologies: ["HTML", "CSS", "React", "TailwindCSS"],
   },
   {
     title: "Weather App",
+    eyebrow: "API-driven UI",
     description:
-      "An Interactive Weather Application built with HTML, CSS, and JavaScript. This app delivers real-time weather updates with a clean, responsive design and user-friendly interface. Key features include dynamic weather data, a search function, and interactive elements.",
+      "An interactive weather application delivering real-time weather information with search, dynamic data, and a clean responsive interface.",
     technologies: ["HTML", "CSS", "JavaScript", "Bootstrap"],
   },
   {
-    title: "Simmon Game",
+    title: "Simon Game",
+    eyebrow: "JavaScript game",
     description:
-      "This is a digit simmon game, which is created in JavaScript, CSS and HTML.",
-    technologies: ["HTML", "CSS","JavaScript"],
+      "A browser-based memory game built with JavaScript, HTML, and CSS, focused on interactive state changes, user input, and game flow.",
+    technologies: ["HTML", "CSS", "JavaScript"],
   },
 ];
 
